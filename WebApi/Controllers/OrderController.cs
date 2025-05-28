@@ -17,21 +17,21 @@ public class OrderController(IOrderService orServ) : ControllerBase
     }
 
     [HttpGet("Get by id")]
-    public async Task<Response<OrderDTO?>> GetOrderByIdAsync(int id)
+    public async Task<Response<OrderDTO>> GetOrderByIdAsync(int id)
     {
         return await orServ.GetOrderAsync(id);
     }
 
     [HttpPost]
-    public async Task<Response<string>> GetOrdersAsync(OrderDTO Order, OrderDetail orderDetail)
+    public async Task<Response<string>> AddOrderAsync([FromBody]OrderDTO Order, [FromQuery]OrderDetailDTO orderDetailDTO)
     {
-        return await orServ.AddOrderAsync(Order, orderDetail);
+        return await orServ.AddOrderAsync(Order, orderDetailDTO);
     }
 
     [HttpPut]
-    public async Task<Response<string>> UpdateOrderAsync(OrderDTO Order, OrderDetail orderDetail)
+    public async Task<Response<string>> UpdateOrderAsync([FromBody]OrderDTO Order,[FromQuery] OrderDetailDTO orderDetailDTO)
     {
-        return await orServ.UpdateOrderAsync(Order, orderDetail);
+        return await orServ.UpdateOrderAsync(Order, orderDetailDTO);
     }
 
     [HttpDelete]

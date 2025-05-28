@@ -10,13 +10,13 @@ namespace Infrastructure.Services;
 
 public class OrderService(DataContext context) : IOrderService
 {
-    public async Task<Response<string>> AddOrderAsync(OrderDTO order, OrderDetail orderDetail)
+    public async Task<Response<string>> AddOrderAsync(OrderDTO order, OrderDetailDTO orderDetailDTO)
     {
         var newOr = new Order
         {
             CustomerId = order.CustomerId,
             OrderDate = order.OrderDate,
-            TotalAmount = orderDetail.Quantity * orderDetail.Price
+            TotalAmount = orderDetailDTO.Quantity * orderDetailDTO.Price
         };
         await context.Orders.AddAsync(newOr);
         var res = await context.SaveChangesAsync();
@@ -40,12 +40,12 @@ public class OrderService(DataContext context) : IOrderService
         : new Response<string>("Success", null);
     }
 
-    public async Task<Response<OrderDTO?>> GetOrderAsync(int id)
+    public async Task<Response<OrderDTO>> GetOrderAsync(int id)
     {
         var order = await context.Orders.FindAsync(id);
         if (order == null)
         {
-            return new Response<OrderDTO?>("order not found", HttpStatusCode.NotFound);
+            return new Response<OrderDTO>("order not found", HttpStatusCode.NotFound);
         }
 
         var result = new OrderDTO
@@ -56,8 +56,8 @@ public class OrderService(DataContext context) : IOrderService
             TotalAmount = order.TotalAmount
         };
         return result == null
-        ? new Response<OrderDTO?>("Something went wrong", HttpStatusCode.InternalServerError)
-        : new Response<OrderDTO?>("success", result);
+        ? new Response<OrderDTO>("Something went wrong", HttpStatusCode.InternalServerError)
+        : new Response<OrderDTO>("success", result);
     }
 
 
@@ -78,7 +78,7 @@ public class OrderService(DataContext context) : IOrderService
         : new Response<List<OrderDTO>>("success", result);
     }
 
-    public async Task<Response<string>> UpdateOrderAsync(OrderDTO order, OrderDetail orderDetail)
+    public async Task<Response<string>> UpdateOrderAsync(OrderDTO order, OrderDetailDTO orderDetailDTO)
     {
         var or = await context.Orders.FindAsync(order.Id);
         if (or == null)
@@ -88,7 +88,7 @@ public class OrderService(DataContext context) : IOrderService
 
         or.CustomerId = order.CustomerId;
         or.OrderDate = order.OrderDate;
-        or.TotalAmount = orderDetail.Quantity * orderDetail.Price;
+        or.TotalAmount = orderDetailDTO.Quantity * orderDetailDTO.Price;
 
         var res = await context.SaveChangesAsync();
         return res == null
