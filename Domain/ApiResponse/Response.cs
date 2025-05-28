@@ -24,3 +24,5 @@ public class Response<T>
         StatusCode = (int)statusCode;
     }
 }
+
+

@@ -707,11 +707,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\M A G A\\Desktop\\hw-28-05\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\M A G A\\Desktop\\from_27.05\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "C:\\Users\\M A G A\\Desktop\\hw-28-05\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "C:\\Users\\M A G A\\Desktop\\from_27.05\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\M A G A\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\M A G A\\Desktop\\hw-28-05\\Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\M A G A\\Desktop\\from_27.05\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\M A G A\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -726,8 +726,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\M A G A\\Desktop\\hw-28-05\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\M A G A\\Desktop\\hw-28-05\\Domain\\Domain.csproj"
+            "C:\\Users\\M A G A\\Desktop\\from_27.05\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\M A G A\\Desktop\\from_27.05\\Domain\\Domain.csproj"
             }
           }
         }
